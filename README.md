@@ -4,6 +4,14 @@ I am attempting to create a chatbot that learns but doesn't use things
 like neural networks, just regular boring code. Also this is my first
 time using GitHub, so please be nice!
 
+## Requirements
+
+-   Python 3 (and modules)
+    -   nltk
+    -   json
+        >   I don't know if this comes with python or if I just already
+        >   had it installed, please tell me if I don't need this
+
 ## Usage
 
 After launching the program, type your "message" and press enter,
@@ -31,6 +39,8 @@ backup if you want.
 -   maybe include conversation history in response calculation (would
     probably make older save files worse)
 -   learn more about hot to manage a github repository
+-   create an executable (probably portable, this isn't big enough to be
+    worth installing)
 
 ## Notes
 
