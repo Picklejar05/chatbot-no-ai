@@ -18,20 +18,27 @@ def get_jaccard_sim(str1, str2):
     c = al.intersection(bl)
     return float(len(c)) / (len(al) + len(bl) - len(c))
 
+# load responses file
 responses = {}
 with open('responses.json', 'r') as fp:
     responses = json.load(fp)
 
 print("loaded!")
 me = ""
+
+# main loop
 try:
     while True:
         you = input("> ")
         responses[me] = you
         scores = {}
+
+        # calculate score for each response
         for response in responses:
             scores[response] = get_jaccard_sim(you, response)
         closest = max(scores, key=scores.get)
+
+        # just in case the bot hasn't heard of anything you said
         if scores[closest] == 0.0:
             me = "hmm. " + you
         else:
@@ -39,7 +46,7 @@ try:
             me = responses[closest]
         print(me)
 
-except KeyboardInterrupt:
+except:
     print("saving and exiting...")
     
     with open('responses.json', 'w') as fp:
