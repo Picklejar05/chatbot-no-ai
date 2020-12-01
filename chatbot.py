@@ -2,6 +2,7 @@ print("loading...")
 
 from nltk.stem import WordNetLemmatizer
 import json
+import sys
 
 lemmatizer = WordNetLemmatizer()
 
@@ -28,23 +29,41 @@ me = ""
 
 # main loop
 try:
-    while True:
-        you = input("> ")
-        responses[me] = you
-        scores = {}
+    if '-dl' in sys.argv:
+        while True:
+            you = input("> ")
+            scores = {}
 
-        # calculate score for each response
-        for response in responses:
-            scores[response] = get_jaccard_sim(you, response)
-        closest = max(scores, key=scores.get)
-
-        # just in case the bot hasn't heard of anything you said
-        if scores[closest] == 0.0:
-            me = "hmm. " + you
-        else:
+            # calculate score for each response
+            for response in responses:
+                scores[response] = get_jaccard_sim(you, response)
             closest = max(scores, key=scores.get)
-            me = responses[closest]
-        print(me)
+
+            # just in case the bot hasn't heard of anything you said
+            if scores[closest] == 0.0:
+                me = "hmm. " + you
+            else:
+                closest = max(scores, key=scores.get)
+                me = responses[closest]
+            print(me)
+    else:
+        while True:
+            you = input("> ")
+            responses[me] = you
+            scores = {}
+
+            # calculate score for each response
+            for response in responses:
+                scores[response] = get_jaccard_sim(you, response)
+            closest = max(scores, key=scores.get)
+
+            # just in case the bot hasn't heard of anything you said
+            if scores[closest] == 0.0:
+                me = "hmm. " + you
+            else:
+                closest = max(scores, key=scores.get)
+                me = responses[closest]
+            print(me)
 
 except:
     print("saving and exiting...")
