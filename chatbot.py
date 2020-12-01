@@ -30,6 +30,7 @@ me = ""
 # main loop
 try:
     if '-dl' in sys.argv:
+        print("Not learning")
         while True:
             you = input("> ")
             scores = {}
