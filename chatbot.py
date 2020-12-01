@@ -67,10 +67,11 @@ try:
             print(me)
 
 except:
-    print("saving and exiting...")
-    
-    with open('responses.json', 'w') as fp:
-        json.dump(responses, fp)
+    if not '-dl' in sys.argv:
+        print("saving and exiting...")
+        
+        with open('responses.json', 'w') as fp:
+            json.dump(responses, fp)
 # test
 print("done!")
 
