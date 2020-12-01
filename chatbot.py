@@ -3,6 +3,7 @@ print("loading...")
 from nltk.stem import WordNetLemmatizer
 import json
 import sys
+v = '-v' in sys.argv
 
 lemmatizer = WordNetLemmatizer()
 
@@ -17,7 +18,10 @@ def get_jaccard_sim(str1, str2):
     for word in b:
         bl.add(lemmatizer.lemmatize(word).lower())
     c = al.intersection(bl)
-    return float(len(c)) / (len(al) + len(bl) - len(c))
+    try:
+        return float(len(c)) / (len(al) + len(bl) - len(c))
+    except ZeroDivisionError:
+        return 0.0
 
 # load responses file
 responses = {}
@@ -46,6 +50,8 @@ try:
             else:
                 closest = max(scores, key=scores.get)
                 me = responses[closest]
+            if v:
+                print("'" + closest + "'", "is", str(scores[closest]*100) + "% similar.")
             print(me)
     else:
         while True:
