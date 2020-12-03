@@ -4,16 +4,29 @@ from nltk.stem import WordNetLemmatizer
 import json
 import sys
 v = '-v' in sys.argv
+punc = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
 
 lemmatizer = WordNetLemmatizer()
 
 # copied and edited from [here](https://towardsdatascience.com/overview-of-text-similarity-metrics-3397c4601f50)
-def get_jaccard_sim(str1, str2): 
-    a = set(str1.split())
+def get_jaccard_sim(str1, str2):
+    ap = str1
+
+    # https://www.geeksforgeeks.org/python-remove-punctuation-from-string/
+    for ele in ap:
+        if ele in punc:
+            ap = ap.replace(ele, "")
+
+    a = set(ap.split())
     al = set()
     for word in a:
         al.add(lemmatizer.lemmatize(word).lower())
-    b = set(str2.split())
+
+    bp = str2
+    for ele in bp:
+        if ele in punc:
+            bp = bp.replace(ele, "")
+    b = set(bp.split())
     bl = set()
     for word in b:
         bl.add(lemmatizer.lemmatize(word).lower())
