@@ -9,8 +9,8 @@ time using GitHub, so please be nice!
 -   Python 3 (and modules)
     -   nltk
     -   json
-        >   I don't know if this comes with python or if I just already
-        >   had it installed, please tell me if I don't need this
+        > I don't know if this comes with python or if I just already
+        > had it installed, please tell me if I don't need this
 
 ## Usage
 
@@ -19,6 +19,11 @@ similarly to an instant messaging program. It will learn new responses
 from your conversations, so keep that in mind. Once you are done, use
 `Ctrl`+`C` to save and exit. `responses.json` is basically a save file,
 so don't replace it if you are downloading a new version.
+
+> Note: **don't** close the program using the `X` button, this will stop
+> the program from saving anything it has learned in this session. On
+> the other hand, use the `X` if you don't want to save anything it's
+> learned.
 
 ## Editing the Save File
 
@@ -33,14 +38,9 @@ backup if you want.
 
 ## Todo
 
--   fix words not counting as a match when one has punctuation at the
-    end (e.g. "Hi!" and "Hi" count as 0.0 similarity instead of 1.0
--   improve size of default save
 -   maybe include conversation history in response calculation (would
     probably make older save files worse)
 -   learn more about hot to manage a github repository
--   create an executable (probably portable, this isn't big enough to be
-    worth installing)
 
 ## Notes
 
