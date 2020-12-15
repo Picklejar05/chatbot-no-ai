@@ -6,6 +6,8 @@ time using GitHub, so please be nice!
 
 ## Requirements
 
+> Note: if you are using the executable, there are no requirements.
+
 -   Python 3 (and modules)
     -   nltk
     -   json
@@ -40,7 +42,7 @@ backup if you want.
 
 -   maybe include conversation history in response calculation (would
     probably make older save files worse)
--   learn more about hot to manage a github repository
+-   add more utility modes (to help with homework)
 
 ## Notes
 
